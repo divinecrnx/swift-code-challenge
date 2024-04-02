@@ -4,6 +4,7 @@ import { memo, useState, useEffect } from "react";
 import config from "../config";
 import { formatOrders } from "../utils";
 import OverdueSalesTable from "./OverdueSalesTable";
+import OverdueSalesStats from "./OverdueSalesStats";
 
 const OverdueSales = ({ style }: any) => {
   const [orders, setOrders] = useState([]);
@@ -36,6 +37,7 @@ const OverdueSales = ({ style }: any) => {
     <Row style={style}>
       <Typography.Paragraph strong>Overdue Orders</Typography.Paragraph>
       <OverdueSalesTable isLoading={isLoading} orders={orders} />
+      <OverdueSalesStats></OverdueSalesStats>
     </Row>
   );
 };

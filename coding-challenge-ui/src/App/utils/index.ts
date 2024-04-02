@@ -19,3 +19,8 @@ export const getFlagEmoji = (countryCode: string) => {
     .map((char: string) => 127397 + char.charCodeAt(0));
   return String.fromCodePoint(...codePoints);
 };
+
+export const formatterUSD = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
