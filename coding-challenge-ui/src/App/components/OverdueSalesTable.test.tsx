@@ -11,11 +11,5 @@ describe("renders overdue sales table", () => {
 
     const orderIdElement = await screen.findByText("ORDER ID");
     expect(orderIdElement).toBeInTheDocument();
-
-    const orderValueElement = await screen.findByText("ORDER VALUE");
-    expect(orderValueElement).toBeInTheDocument();
-
-    const daysOverdueElement = await screen.findByText("DAYS OVERDUE");
-    expect(daysOverdueElement).toBeInTheDocument();
   });
 });

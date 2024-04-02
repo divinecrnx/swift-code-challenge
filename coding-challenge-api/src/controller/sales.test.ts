@@ -1,4 +1,4 @@
-import getSales, { getOrders, getStores } from "./sales";
+import { getOrders, getStores, getSales } from "./sales";
 
 test("getOrders returns data from orders.csv", async () => {
   const orders = await getOrders();

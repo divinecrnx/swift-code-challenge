@@ -1,7 +1,15 @@
 import { Table } from "antd";
 import { memo, useState, useMemo, useCallback } from "react";
 
-import { getFlagEmoji } from "../utils";
+import { getFlagEmoji, formatterUSD } from "../utils";
+
+const markRedIfOverdue = (overdueDelta: number) => {
+  if (overdueDelta < 0) {
+    return <span style={{color: "red"}}>{overdueDelta}</span>
+  }
+
+  return overdueDelta;
+}
 
 const OverdueSalesTable = ({ orders = [], isLoading = false }: any) => {
   const [pagination, setPagination] = useState({ current: 1, pageSize: 10 });
@@ -43,6 +51,30 @@ const OverdueSalesTable = ({ orders = [], isLoading = false }: any) => {
       {
         title: "DESTINATION",
         dataIndex: "destination",
+        responsive: ["md"],
+      },
+      {
+        title: "DAYS OVERDUE",
+        dataIndex: "daysOverdue",
+        render: (record: any) => markRedIfOverdue(record),
+        responsive: ["md"],
+      },
+      {
+        title: "ORDER VALUE",
+        dataIndex: "orderValue",
+        render: (record: any) => formatterUSD.format(record),
+        responsive: ["md"],
+      },
+      {
+        title: "ORDER TAXES",
+        dataIndex: "taxes",
+        render: (record: any) => `${record}%`,
+        responsive: ["md"],
+      },
+      {
+        title: "ORDER TOTAL",
+        dataIndex: "orderTotal",
+        render: (record: any) => formatterUSD.format(record),
         responsive: ["md"],
       },
     ],
